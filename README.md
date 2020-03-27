@@ -1,54 +1,10 @@
-# HBNB
+<h1 align="center">AirBnB Clone V2 - MySQL</h2>
 
-This is the console /command interpreter for the Holberton Airbnb clone project. The console can be used to store objects in and retrieve objects from a JSON.
 
-### Supported classes:
-* BaseModel
-* User
-* State
-* City
-* Amenity
-* Place
-* Review
-
-### Commands:
-* create - create an object
-* show - show an object (based on id)
-* destroy - destroy an object
-* all - show all objects, of one type or all types
-* quit/EOF - quit the console
-* help - see descriptions of commands
-
-To start, navigate to the project folder and enter `./console.py` in the shell.
-
-#### Create
-`create <class name>`
-Ex:
-`create BaseModel`
-
-#### Show
-`show <class name> <object id>`
-Ex:
-`show User my_id`
-
-#### Destroy
-`destroy <class name> <object id>`
-Ex:
-`destroy Place my_place_id`
-
-#### All
-`all` or `all <class name>`
-Ex:
-`all` or `all State`
-
-#### Quit
-`quit` or `EOF`
-
-#### Help
-`help` or `help <command>`
-Ex:
-`help` or `help quit`
-
-Additionally, the console supports `<class name>.<command>(<parameters>)` syntax.
-Ex:
-`City.show(my_city_id)`
+#### Authors
+| Name | Email | Project Component |
+| -------------------------- | ------------------------- | ----------------------|
+[Michelle Giraldo](https://github.com/michellegsld) | michelle.giraldo@holbertonschool.com | MySQL
+[Kati Fredlund](https://github.com/KFredlund) | kati.fredlund@holbertonschool.com | MySQL
+[Miranda Evans](https://github.com/yook00627) | miranda.r.evans@gmail.com | [Console](https://github.com/yook00627/AirBnB_clone)
+[Kevin Yook](https://github.com/yook00627) | kevin.yook@holbertonschool.com | [Console](https://github.com/yook00627/AirBnB_clone) 
