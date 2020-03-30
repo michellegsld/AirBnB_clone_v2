@@ -6,6 +6,16 @@ from sqlalchemy.ext.declarative import declarative_base
 from os import getenv
 
 
+place_amenity = Table("place_amenity", Base.metadata,
+                      Column("place_id", String(60),
+                             ForeignKey("places.id"), primary_key=True,
+                             nullable=False)
+                      Column("amenity_id", String(60),
+                             ForeignKey("amenities.id"), primary_key=True,
+                             nullable=False)
+                      )
+
+
 class Place(BaseModel, Base):
     """This is the class for Place
     Attributes:
@@ -38,3 +48,40 @@ class Place(BaseModel, Base):
     latitude = Column("latitude", Float, nullable=True)
     longitude = Column("longitude", Float, nullable=True)
     amenity_ids = []
+    reviews = relationship('Review', backref='Place')
+    amenities = relationship('Amenity', secondary=place_amenity,
+                             viewonly=False)
+
+    @property
+    def reviews(self):
+        """
+        Returns the list of Review instances when place_id equals
+        current Place.id
+        """
+        review_list = []
+        review_dict = storage.all(Review)
+        for key, value in review_dict.items():
+            review_list.append(review_dict[key])
+        return review_list
+
+    @property
+    def amenities(self):
+        """
+        Returns the list of Amenity instances based on the attribute
+        amenity_ids that contains all Amenity.id linked to the Place
+        """
+        amenity_list = []
+        amenity_dict = storage.all(Amenity)
+        for key, value in amenity_dict.items():
+            amenity_list.append(amenity_dict[key])
+        return amenity_list
+
+    @amenities.setter
+    def amenities(self, amenities):
+        """
+        Handles append method for adding an Amenity.id to amenity_ids
+        """
+        if amenities:
+            self.__amenities.append(amenity.id)
+        else:
+            self.__amenities = amenities
