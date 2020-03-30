@@ -9,6 +9,7 @@ from os import getenv
 class User(BaseModel, Base):
     """This is the class for user
     Attributes:
+        __tablename__ : users table
         email: email address
         password: password for your login
         first_name: first name
