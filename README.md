@@ -1,6 +1,6 @@
 <h1 align="center">AirBnB Clone V2 - MySQL</h2>
 
-<div align="center">![HBnB logo](/web_static/images/HBnb.png)</div>
+<div style="text-align:center"><img src="/web_static/images/HBnb.png"/></div>
 
 ## Description
 
