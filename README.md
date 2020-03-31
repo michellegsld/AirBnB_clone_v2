@@ -1,5 +1,6 @@
 <h1 align="center">AirBnB Clone V2 - MySQL</h2>
-![HBnB logo](https://i.pinimg.com/originals/d0/bf/7f/d0bf7f0d8ef72afab6b37f6c44186908.png)
+![HBnB logo](web_static/images/HBnb.png)
+
 ## Description
 
 > ### HBnB is a clone of AirBnB's command interpreter. This project focuses on the backend.
