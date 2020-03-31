@@ -74,16 +74,16 @@ e16d4b4d-9320-408c-90f4-0752be7fa65d
 ```
 
 $ echo "help" | ./console.py
-(hbnb)•
+(hbnb)
 Documented commands (type help <topic>):
 ========================================
 EOF  all  create  destroy  help  quit  show  update
 
-(hbnb)•
+(hbnb)
 
 $ echo show | ./console.py
 (hbnb) ** class name missing **
-(hbnb)•
+(hbnb)
 
 $ echo all | ./console.py
 (hbnb) {'BaseModel.14dd894f-da3b-4e40-84a0-03b558ff80f1': <models.base_model.BaseModel object at 0x7f49b4f29e80>, 'User.7f69c2a7-fd1c-40bf-a948-b30d186e26be': <models.user.User object at 0x7f49b42ba7b8>, 'User.e1839253-151c-4bdb-80ad-7781cfec0cac': <models.user.User object at 0x7f49b42efc18>, 'BaseModel.138486be-3e76-43c8-b4f0-59f8c4888e87': <models.base_model.BaseModel object at 0x7f49b42efb38>, 'User.e16d4b4d-9320-408c-90f4-0752be7fa65d': <models.user.User object at 0x7f49b42efb00>, 'BaseModel.e12c8168-bad8-4ac1-b685-f8bcc1a57bed': <models.base_model.BaseModel object at 0x7f49b42efd30>}
