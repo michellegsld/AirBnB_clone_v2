@@ -56,8 +56,10 @@ class TestCity(unittest.TestCase):
         self.assertEqual(type(self.city.name), str)
         self.assertEqual(type(self.city.state_id), str)
 
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db',
+                     "Incorrect storage type")
     def test_save_City(self):
-        """test if the save works"""
+        """test if the save works for FileStorage"""
         self.city.save()
         self.assertNotEqual(self.city.created_at, self.city.updated_at)
 
