@@ -60,5 +60,6 @@ class FileStorage:
         """deletes obj from __objects if it's inside
         """
         if obj:
-            del self.__objects[obj]
+            key = type(obj).__name__ + "." + obj.id
+            del self.__objects[key]
         return self.__objects
