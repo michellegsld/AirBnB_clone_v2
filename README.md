@@ -1,4 +1,5 @@
 <h1 align="center">AirBnB Clone V2 - MySQL</h2>
+![HBnB logo](https://i.pinimg.com/originals/d0/bf/7f/d0bf7f0d8ef72afab6b37f6c44186908.png)
 
 ## Description
 
@@ -97,4 +98,4 @@ $
 | -------------------------- | ------------------------- | ----------------------|
 [Michelle Giraldo](https://github.com/michellegsld) | michelle.giraldo@holbertonschool.com | MySQL
 [Kati Fredlund](https://github.com/KFredlund) | kati.fredlund@holbertonschool.com | MySQL
-[Kevin Yook](https://github.com/yook00627) | kevin.yook@holbertonschool.com | [Console](https://github.com/yook00627/AirBnB_clone) 
+[Kevin Yook](https://github.com/yook00627) | kevin.yook@holbertonschool.com | [Console](https://github.com/yook00627/AirBnB_clone)
