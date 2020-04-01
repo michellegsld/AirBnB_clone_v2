@@ -6,8 +6,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from os import getenv
 
-
-place_amenity = Table("place_amenity", Base.metadata,
+metadata = Base.metadata
+place_amenity = Table("place_amenity", metadata,
                       Column("place_id", String(60),
                              ForeignKey("places.id"), primary_key=True,
                              nullable=False),
@@ -49,40 +49,36 @@ class Place(BaseModel, Base):
     latitude = Column("latitude", Float, nullable=True)
     longitude = Column("longitude", Float, nullable=True)
     amenity_ids = []
-    reviews = relationship('Review', backref='Place')
-    amenities = relationship('Amenity', secondary=place_amenity,
-                             backref='place_amenities', viewonly=False)
 
-    @property
-    def reviews(self):
-        """
-        Returns the list of Review instances when place_id equals
-        current Place.id
-        """
-        review_list = []
-        review_dict = storage.all(Review)
-        for key, value in review_dict.items():
-            review_list.append(review_dict[key])
-        return review_list
+    if getenv("HBNB_TYPE_STORAGE") == "db":
+        reviews = relationship('Review', backref='place')
+        amenities = relationship('Amenity', secondary=place_amenity,
+                                 backref='place_amenities', viewonly=False)
+    else:
+        @property
+        def reviews(self):
+            """
+            Returns the list of Review instances when place_id equals
+            current Place.id
+            """
+            review_list = []
+            review_dict = storage.all(Review)
+            for key, value in review_dict.items():
+                review_list.append(review_dict[key])
+            return review_list
 
-    @property
-    def amenities(self):
-        """
-        Returns the list of Amenity instances based on the attribute
-        amenity_ids that contains all Amenity.id linked to the Place
-        """
-        from models.__init__ import storage
-        from models.amenity import Amenity
-        amenity_list = []
-        amenity_dict = storage.all(Amenity)
-        for k, v in amenity_dict.items():
-            amenity_list.append(amenity_dict[k])
-        return amenity_list
+        @property
+        def amenities(self):
+            """
+            Returns the list of Amenity instances based on the attribute
+            amenity_ids that contains all Amenity.id linked to the Place
+            """
+            return self.amenity_ids
 
-    @amenities.setter
-    def amenities(self, cls=None):
-        """
-        Handles append method for adding an Amenity.id to amenity_ids
-        """
-        if cls is Amenity:
-            self.amenity_ids.append(cls.id)
+        @amenities.setter
+        def amenities(self, obj):
+            """
+            Handles append method for adding an Amenity.id to amenity_ids
+            """
+            if obj.id == Amenity.id:
+                self.amenity_ids.append(obj)
