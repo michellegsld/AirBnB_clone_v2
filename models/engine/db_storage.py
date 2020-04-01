@@ -37,7 +37,7 @@ class DBStorage:
         """Query either all of a certain type or every objects on
         the current database session
         """
-        tables_list = [State, City]
+        tables_list = [State, City, User, Place, Review]
         query_list = []
         query_dict = {}
 
