@@ -1,11 +1,20 @@
 #!/usr/bin/python3
 """This is the place class"""
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, Integer, Float, ForeignKey
+from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from os import getenv
 
+
+place_amenity = Table("place_amenity", Base.metadata,
+                      Column("place_id", String(60),
+                             ForeignKey("places.id"), primary_key=True,
+                             nullable=False),
+                      Column("amenity_id", String(60),
+                             ForeignKey("amenities.id"), primary_key=True,
+                             nullable=False)
+                      )
 
 
 class Place(BaseModel, Base):
@@ -41,6 +50,8 @@ class Place(BaseModel, Base):
     longitude = Column("longitude", Float, nullable=True)
     amenity_ids = []
     reviews = relationship('Review', backref='Place')
+    amenities = relationship('Amenity', secondary=place_amenity,
+                             backref='place_amenities', viewonly=False)
 
     @property
     def reviews(self):
@@ -60,18 +71,18 @@ class Place(BaseModel, Base):
         Returns the list of Amenity instances based on the attribute
         amenity_ids that contains all Amenity.id linked to the Place
         """
+        from models.__init__ import storage
+        from models.amenity import Amenity
         amenity_list = []
         amenity_dict = storage.all(Amenity)
-        for key, value in amenity_dict.items():
-            amenity_list.append(amenity_dict[key])
+        for k, v in amenity_dict.items():
+            amenity_list.append(amenity_dict[k])
         return amenity_list
 
     @amenities.setter
-    def amenities(self, amenities):
+    def amenities(self, cls=None):
         """
         Handles append method for adding an Amenity.id to amenity_ids
         """
-        if amenities:
-            self.__amenities.append(amenity.id)
-        else:
-            self.__amenities = amenities
+        if cls is Amenity:
+            self.amenity_ids.append(cls.id)
