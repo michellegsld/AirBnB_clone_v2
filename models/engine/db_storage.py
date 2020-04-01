@@ -26,10 +26,10 @@ class DBStorage:
         sql_pass = getenv("HBNB_MYSQL_PWD")
         sql_host = getenv("HBNB_MYSQL_HOST")
         db_name = getenv("HBNB_MYSQL_DB")
-        self.__engine=create_engine('mysql+mysqldb://{}:{}@{}/{}'
-                                    .format(sql_user, sql_pass,
-                                    sql_host, db_name),
-                                    pool_pre_ping=True)
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
+                                      .format(sql_user, sql_pass,
+                                              sql_host, db_name),
+                                      pool_pre_ping=True)
         if getenv("HBNB_ENV") == "test":
             Base.metadata.drop_all(self.__engine)
 
@@ -37,19 +37,20 @@ class DBStorage:
         """Query either all of a certain type or every objects on
         the current database session
         """
-        tables_list = [State, City, User, Place, Review]
+        tables_list = [State, City, User, Amenity, Place, Review]
         query_list = []
         query_dict = {}
 
-        if cls == None:
+        if cls is None:
             for table in tables_list:
                 query_list.append((self.__session).query(table).all())
+            for query_table in query_list:
+                for obj in query_table:
+                    key = "{}.{}".format(type(obj).__name__, obj.id)
+                    query_dict[key] = obj
         else:
             query_list = (self.__session).query(cls).all()
-
-        for query_table in query_list:
-            for obj in query_table:
-                print(type(obj).__name__)
+            for obj in query_list:
                 key = "{}.{}".format(type(obj).__name__, obj.id)
                 query_dict[key] = obj
 
