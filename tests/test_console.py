@@ -91,7 +91,8 @@ class TestConsole(unittest.TestCase):
             self.assertEqual(
                 "[[User]", f.getvalue()[:7])
 
-    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == 'db', "Wrong storage")
+    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == 'db',
+                     "Incorrect storage type")
     def test_create(self):
         """Test create command input o"""
         with patch('sys.stdout', new=StringIO()) as f:
@@ -156,7 +157,8 @@ class TestConsole(unittest.TestCase):
             self.consol.onecmd("all State")
             self.assertEqual("[]\n", f.getvalue())
 
-    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == 'db', "Wrong storage")
+    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == 'db',
+                     "Incorrect storage type")
     def test_update(self):
         """Test update command input for FileStorage"""
         with patch('sys.stdout', new=StringIO()) as f:
