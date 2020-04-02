@@ -7,6 +7,7 @@ import os
 from sqlalchemy.sql import select
 
 
+@unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") != 'db', "Wrong storage")
 class TestDBStorage(unittest.TestCase):
     """ DBStorage Tests """
 
