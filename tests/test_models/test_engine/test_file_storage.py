@@ -13,7 +13,9 @@ from models.place import Place
 from models.review import Review
 from models.engine.file_storage import FileStorage
 
-@unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == 'db', "Wrong storage")
+
+@unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == 'db',
+                 "Incorrect storage type")
 class TestFileStorage(unittest.TestCase):
     '''this will test the FileStorage'''
 
