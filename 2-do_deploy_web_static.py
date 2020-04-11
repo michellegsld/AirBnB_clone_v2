@@ -40,14 +40,15 @@ def do_deploy(archive_path):
     if os.path.exists(archive_path) is False:
         return False
 
-    file_name = archive_path.split('/')[1]
-    new_folder = '/data/web_static/releases/' + file_name
+    file_name_exe = archive_path.split('/')[1]
+    file_name = file_name_exe[:-4]
+    new_folder = "/data/web_static/releases/" + file_name
 
     try:
-        put(archive_path, '/tmp/')
+        put(archive_path, '/tmp/ +')
         run("mkdir -p" + new_folder)
-        run("tar -xzf /tmp/" + file_name + " -C " + new_folder)
-        run("rm /tmp/" + file_name)
+        run("tar -xzf /tmp/" + file_name_exe + " -C " + new_folder)
+        run("rm /tmp/" + file_name_exe)
         run("mv " + new_folder + "/web_static/* " + new_folder)
         run("rm -rf " + new_folder + "/web_static")
         run("rm -rf /data/web_static/current")
