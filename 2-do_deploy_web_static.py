@@ -52,7 +52,7 @@ def do_deploy(archive_path):
         run("mv {}/web_static/* {}/".format(new_folder, new_folder))
         run("rm -rf {}/web_static".format(new_folder))
         run("rm -rf /data/web_static/current")
-        run("ln -s {} /data/web_static/current".format(new_folder))
+        run("ln -s {}/ /data/web_static/current".format(new_folder))
         return True
     except:
         return False
