@@ -45,7 +45,7 @@ def do_deploy(archive_path):
     new_folder = "/data/web_static/releases/" + file_name
 
     try:
-        put(archive_path, "/tmp/")
+        put(archive_path, "/tmp/{}".format(file_name_exe))
         run("mkdir -p {}".format(new_folder))
         run("tar -xzf /tmp/{} -C {}/".format(file_name_exe, new_folder))
         run("rm /tmp/{}".format(file_name_exe))
