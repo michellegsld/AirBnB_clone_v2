@@ -19,7 +19,7 @@ def do_pack():
     """
 
     now = datetime.now()
-    time_now = now.strftime("%Y%m%dD%H%M%S")
+    time_now = now.strftime("%Y%m%d%H%M%S")
     archive_name = "versions/web_static_" + time_now + ".tgz"
     local('mkdir -p versions')
     archive_command = local("tar -zcvf " + archive_name + " web_static")
