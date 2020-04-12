@@ -83,11 +83,18 @@ def do_clean(number=0):
     """
     files = local("ls -tr versions", capture=True)
 
-    if number is 0:
+    number = int(number)
+
+    if number == 0:
         number = 1
 
-    if len(files) > 0:
-        files = files.split(" ")
-        length = len(files)
-        for num in range(0, length - number):
-            run("rm -rf {}".format(files[num]))
+    files = files.split("\n")
+    length = len(files)
+    for num in range(0, length - number):
+        local("rm -rf versions/{}".format(files[num]))
+
+    files = run("ls -tr /data/web_static/releases")
+    files = files.split("\n")
+    length = len(files)
+    for num in range(0, length - number):
+        run("rm -rf /data/web_static/releases/{}".format(files[num]))
