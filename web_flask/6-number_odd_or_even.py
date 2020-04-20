@@ -54,15 +54,13 @@ def number(n, strict_slashes=False):
 
 
 @app.route('/number_template/<n>')
-def number_template(n, strict_slashes=False):
+def number_template_n(n, strict_slashes=False):
     """
     Route that displays an HTML page
     But only if <n> is an integer
     """
     if n.isdigit():
-        return Markup('<!DOCTYPE html>\n<HTML lang="en">\n    <HEAD>\n \
-        <TITLE>HBNB</TITLE>\n    </HEAD>\n    <BODY> \n \
-        <H1>Number: %s</H1>\n    </BODY>\n</HTML>') % n
+        return render_template('5-number.html', n=n)
 
 
 @app.route('/number_odd_or_even/<n>')
@@ -77,9 +75,7 @@ def number_odd_or_even(n, strict_slashes=False):
             string = n + " is even"
         else:
             string = n + " is odd"
-        return Markup('<!DOCTYPE html>\n<HTML lang="en">\n    <HEAD>\n \
-        <TITLE>HBNB</TITLE>\n    </HEAD>\n    <BODY> \n \
-        <H1>Number: %s</H1>\n    </BODY>\n</HTML>') % string
+        return render_template('5-number.html', string=string)
 
 
 if __name__ == '__main__':
