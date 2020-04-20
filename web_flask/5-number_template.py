@@ -4,7 +4,7 @@
 Task 5:
 A script that starts a Flask web application
 """
-from flask import Flask, Markup
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -60,9 +60,7 @@ def number_template_n(n, strict_slashes=False):
     But only if <n> is an integer
     """
     if n.isdigit():
-        return Markup('<!DOCTYPE html>\n<HTML lang="en">\n    <HEAD>\n \
-        <TITLE>HBNB</TITLE>\n    </HEAD>\n    <BODY> \n \
-        <H1>Number: %s</H1>\n    </BODY>\n</HTML>') % n
+        return render_template('5-number.html', n=n)
 
 
 if __name__ == '__main__':
