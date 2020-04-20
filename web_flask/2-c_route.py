@@ -28,7 +28,7 @@ def hbnb(strict_slashes=False):
 @app.route('/c/<text>')
 def c_text(text, strict_slashes=False):
     """
-    Route that displays HBNB
+    Route that displays C + <text>
     """
     return 'C {}'.format(text.replace("_", " "))
 
