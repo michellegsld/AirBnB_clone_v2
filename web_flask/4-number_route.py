@@ -4,7 +4,7 @@
 Task 4:
 A script that starts a Flask web application
 """
-from flask import Flask, escape, request
+from flask import Flask, abort
 
 app = Flask(__name__)
 
@@ -51,6 +51,7 @@ def number_n(n, strict_slashes=False):
     """
     if n.isdigit():
         return '{} is a number'.format(n)
+    abort(404)
 
 
 if __name__ == '__main__':
