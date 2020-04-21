@@ -51,6 +51,7 @@ def number_n(n, strict_slashes=False):
     """
     if n.isdigit():
         return '{} is a number'.format(n)
+    abort(404)
 
 
 @app.route('/number_template/<n>')
