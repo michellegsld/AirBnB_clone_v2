@@ -4,7 +4,7 @@
 Task 6:
 A script that starts a Flask web application
 """
-from flask import Flask, Markup
+from flask import Flask, render_template, abort
 
 app = Flask(__name__)
 
@@ -51,6 +51,7 @@ def number(n, strict_slashes=False):
     """
     if n.isdigit():
         return '{} is a number'.format(n)
+    abort(404)
 
 
 @app.route('/number_template/<n>')
@@ -61,6 +62,7 @@ def number_template_n(n, strict_slashes=False):
     """
     if n.isdigit():
         return render_template('5-number.html', n=n)
+    abort(404)
 
 
 @app.route('/number_odd_or_even/<n>')
@@ -76,6 +78,7 @@ def number_odd_or_even(n, strict_slashes=False):
         else:
             string = n + " is odd"
         return render_template('6-number_odd_or_even.html', string=string)
+    abort(404)
 
 
 if __name__ == '__main__':
