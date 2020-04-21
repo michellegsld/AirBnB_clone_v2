@@ -74,9 +74,9 @@ def number_odd_or_even(n, strict_slashes=False):
     if n.isdigit():
         file = '6-number_odd_or_even.html'
         if int(n) % 2 == 0:
-            string = n + " is even"
+            string = "{} is even".format(n)
         else:
-            string = n + " is odd"
+            string = "{} is odd".format(n)
         return render_template(file, string=string)
     abort(404)
 
