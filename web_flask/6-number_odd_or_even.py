@@ -44,7 +44,7 @@ def python_text(text='is cool', strict_slashes=False):
 
 
 @app.route('/number/<n>')
-def number(n, strict_slashes=False):
+def number_n(n, strict_slashes=False):
     """
     Route that displays <n> + is a number
     But only if <n> is an integer
