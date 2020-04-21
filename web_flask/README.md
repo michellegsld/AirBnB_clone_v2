@@ -11,4 +11,4 @@
 | 4-number_route.py | It continues off the previous file, adding the route `/number/<n>` and displaying “n is a number”, but only if `n` is an integer. |
 | 5-number_template.py | It continues off the previous file, adding the route `/number_template/<n>` and displaying an HTML page but only if `n` is an integer. (`H1` tag: “Number: n” inside the tag `BODY`) |
 | 6-number_odd_or_even.py | It continues off the previous file, adding the route `/number_odd_or_even/<n>` and displaying an HTML page but only if `n` is an integer. (`H1` tag: “Number: n is even|odd” inside the tag `BODY`) |
-| templates | A folder containing the files `5-number.html` and `6-number_odd_or_even.html`. These are used in tasks 5 and 6 (files `5-number_template.py` and `6-number_odd_or_even.html`). |
+| templates | A folder containing the files `5-number.html` and `6-number_odd_or_even.html`. These are used in tasks 5 and 6 (files `5-number_template.py` and `6-number_odd_or_even.py`). |
