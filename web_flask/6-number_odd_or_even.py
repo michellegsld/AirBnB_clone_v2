@@ -68,8 +68,7 @@ def number_template_n(n, strict_slashes=False):
 @app.route('/number_odd_or_even/<n>')
 def number_odd_or_even(n, strict_slashes=False):
     """
-    Route that displays an HTML page
-    But only if <n> is an integer
+    Route that displays an HTML page if <n> is an integer
     What is printed depends on if <n> is even or odd
     """
     if n.isdigit():
