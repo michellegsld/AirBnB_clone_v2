@@ -25,7 +25,7 @@ def list_all(strict_slashes=False):
     """
     states_dict = storage.all(State)
     list_sorted = sorted(states_dict.values(), key=lambda obj: (obj.name))
-    return render_template("7-states_list.html", list=list_sorted)
+    return render_template("9-states.html", state_list=list_sorted)
 
 
 @app.route('/states/<id>')
@@ -38,7 +38,7 @@ def list_specific(id, strict_slashes=False):
     if key not in states_dict.keys():
         return render_template("9-states.html", state_obj='None')
     else:
-        return render_template("9-states.html", state_obj=states_dict[key])
+        return render_template("9-states.html", state_list='None', state_obj=states_dict[key])
 
 
 if __name__ == '__main__':
