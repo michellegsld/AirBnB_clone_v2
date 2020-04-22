@@ -33,6 +33,10 @@ class BaseModel:
         """
         flag = 1
         if kwargs:
+            if "created_at" not in kwargs:
+                setattr(self, "created_at", datetime.now())
+            if "updated_at" not in kwargs:
+                setattr(self, "updated_at", datetime.now())
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
