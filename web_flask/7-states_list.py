@@ -23,7 +23,8 @@ def list_states(strict_slashes=False):
     All State objects present in DBStorage, sorted by name
     """
     states_dict = storage.all(State)
-    return render_template("7-states_list.html", list=states_dict.values())
+    list_sorted = sorted(states_dict.values(), key=lambda obj: (obj.name))
+    return render_template("7-states_list.html", list=list_sorted)
 
 
 if __name__ == '__main__':
