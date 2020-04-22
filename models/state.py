@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """This is the state class"""
+import models
 from models.base_model import BaseModel, Base
+from models.city import City
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -23,7 +25,7 @@ class State(BaseModel, Base):
         state_id equals the current State.id
         """
         city_list = []
-        city_dict = storage.all(City)
+        city_dict = models.storage.all(City)
         for key, value in city_dict.items():
             city_list.append(city_dict[key])
         return city_list
