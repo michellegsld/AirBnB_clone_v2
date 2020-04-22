@@ -19,7 +19,8 @@
         <UL>
         {% for city_item in state_obj.cities|sort(attribute='name') %}
             <LI>{{city_item.id}}: <B>{{city_item.name}}</B></LI>
+        {% endfor %}
         </UL>
-        {% endfor %} {% endif %}
+        {% endif %}
     </BODY>
 </HTML>
