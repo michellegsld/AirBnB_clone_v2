@@ -38,7 +38,8 @@ def list_specific(id, strict_slashes=False):
     if key not in states_dict.keys():
         return render_template("9-states.html", state_obj='None')
     else:
-        return render_template("9-states.html", state_list='None', state_obj=states_dict[key])
+        s = states_dict[key]
+        return render_template("9-states.html", state_list='None', state_obj=s)
 
 
 if __name__ == '__main__':
