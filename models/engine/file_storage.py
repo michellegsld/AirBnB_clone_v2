@@ -53,7 +53,8 @@ class FileStorage:
         """
         my_dict = {}
         for key, value in self.__objects.items():
-            my_dict[key] = value.to_dict()
+            if key is not None and value is not None:
+                my_dict[key] = value.to_dict()
         with open(self.__file_path, 'w', encoding="UTF-8") as f:
             json.dump(my_dict, f)
 
@@ -75,3 +76,8 @@ class FileStorage:
             key = type(obj).__name__ + "." + obj.id
             del self.__objects[key]
         return self.__objects
+
+    def close(self):
+        """calls reload() to deserialize the JSON file to objects
+        """
+        reload()
