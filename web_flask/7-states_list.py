@@ -16,8 +16,8 @@ def remove_sqlalchemy(self):
     storage.close()
 
 
-@app.route('/states_list')
-def list_states(strict_slashes=False):
+@app.route('/states_list', strict_slashes=False)
+def list_states():
     """
     Route that displays a list of:
     All State objects present in DBStorage, sorted by name
