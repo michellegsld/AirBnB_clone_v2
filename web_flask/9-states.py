@@ -18,8 +18,8 @@ def remove_sqlalchemy(self):
     storage.close()
 
 
-@app.route('/states')
-def list_all(strict_slashes=False):
+@app.route('/states', strict_slashes=False)
+def list_all():
     """
     Route that displays all States
     """
@@ -28,8 +28,8 @@ def list_all(strict_slashes=False):
     return render_template("7-states_list.html", list=list_sorted)
 
 
-@app.route('/states/<id>')
-def list_specific(id, strict_slashes=False):
+@app.route('/states/<id>', strict_slashes=False)
+def list_specific(id):
     """
     Route that displays a State based off <id>
     """
