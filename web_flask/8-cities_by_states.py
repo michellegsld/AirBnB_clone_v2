@@ -18,8 +18,8 @@ def remove_sqlalchemy(self):
     storage.close()
 
 
-@app.route('/cities_by_states')
-def list_cities(strict_slashes=False):
+@app.route('/cities_by_states', strict_slashes=False)
+def list_cities():
     """
     Route that displays all City objects linked to a State
     """
