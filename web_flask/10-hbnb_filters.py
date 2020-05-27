@@ -18,8 +18,8 @@ def remove_sqlalchemy(self):
     storage.close()
 
 
-@app.route('/hbnb_filters')
-def filters(strict_slashes=False):
+@app.route('/hbnb_filters', strict_slashes=False)
+def filters():
     """
     Route that displays info in the filters
     """
