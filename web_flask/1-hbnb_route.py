@@ -9,16 +9,16 @@ from flask import Flask, escape, request
 app = Flask(__name__)
 
 
-@app.route('/')
-def index(strict_slashes=False):
+@app.route('/', strict_slashes=False)
+def index():
     """
     Main route and what it displays
     """
     return 'Hello HBNB!'
 
 
-@app.route('/hbnb')
-def hbnb(strict_slashes=False):
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
     """
     Route that displays HBNB
     """
